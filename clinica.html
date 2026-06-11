@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clínica Saúde Plena — Cuidando de Você</title>
+<meta name="description" content="Clínica médica multiespecialidade em Salvador. Consultas humanizadas, agendamento rápido e equipe especializada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --s0:#F7FAFE;
+  --s1:#EEF4FD;
+  --bd:#E1EAF8;
+  --blue:#1570EF;
+  --blue2:#528BFF;
+  --bluelight:#EBF2FF;
+  --navy:#0D1B3E;
+  --slate:#3A5278;
+  --muted:#6B80A0;
+  --light:#97AACA;
+  --grn:#17B26A;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--navy);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ══ NAV ══ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:#fff;border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:64px;
+  transition:box-shadow .3s;
+}
+.nav.solid{box-shadow:0 4px 24px rgba(13,27,62,.08)}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-cross{
+  width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,var(--blue),#1148C8);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(21,112,239,.3);
+}
+.nav-cross svg{width:16px;height:16px}
+.nav-brand-name{font-size:16px;font-weight:800;letter-spacing:-.5px;color:var(--navy)}
+.nav-brand-name span{color:var(--blue)}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-phone{font-size:13px;font-weight:600;color:var(--slate);display:flex;align-items:center;gap:6px}
+.nav-phone svg{width:14px;height:14px;color:var(--blue)}
+.nav-btn{background:var(--blue);color:#fff;font-size:13px;font-weight:700;padding:9px 20px;border-radius:8px;transition:all .3s var(--ease);box-shadow:0 2px 12px rgba(21,112,239,.25)}
+.nav-btn:hover{background:#1148C8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(21,112,239,.35)}
+
+/* ══ HERO — SPLIT LAYOUT ══ */
+.hero{
+  display:grid;grid-template-columns:1fr 420px;
+  gap:0;min-height:calc(100vh - 64px);
+  align-items:stretch;
+}
+.hero-left{
+  padding:72px 64px 72px 56px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:#fff;
+}
+.hero-right{
+  background:var(--s0);border-left:1px solid var(--bd);
+  padding:48px 36px;
+  display:flex;flex-direction:column;justify-content:center;gap:20px;
+  position:relative;overflow:hidden;
+}
+.hero-right::before{
+  content:'';position:absolute;bottom:-60px;right:-60px;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(21,112,239,.08) 0%,transparent 65%);
+}
+.h-available{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(23,178,106,.08);border:1px solid rgba(23,178,106,.2);
+  border-radius:100px;padding:7px 14px 7px 10px;
+  margin-bottom:32px;width:fit-content;
+  opacity:0;animation:fu .7s var(--ease) .2s forwards;
+}
+.h-dot{width:8px;height:8px;border-radius:50%;background:var(--grn);animation:blink 2s ease infinite;flex-shrink:0}
+.h-available span{font-size:12px;font-weight:600;color:var(--grn)}
+.hero-h1{
+  font-size:clamp(44px,5.5vw,76px);font-weight:900;
+  line-height:.93;letter-spacing:clamp(-2px,-.04em,-4px);
+  color:var(--navy);margin-bottom:24px;
+  opacity:0;animation:fu .9s var(--ease) .4s forwards;
+}
+.hero-h1 span{color:var(--blue)}
+.hero-desc{
+  font-size:16px;color:var(--muted);line-height:1.75;
+  max-width:420px;margin-bottom:40px;
+  opacity:0;animation:fu .8s var(--ease) .6s forwards;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;opacity:0;animation:fu .8s var(--ease) .75s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--blue);color:#fff;font-size:14px;font-weight:700;padding:15px 28px;border-radius:10px;box-shadow:0 4px 18px rgba(21,112,239,.28);transition:all .3s var(--ease)}
+.btn-primary:hover{background:#1148C8;transform:translateY(-2px);box-shadow:0 10px 32px rgba(21,112,239,.4)}
+.btn-secondary{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--bd);color:var(--slate);font-size:14px;font-weight:500;padding:15px 24px;border-radius:10px;transition:all .3s var(--ease)}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue);background:var(--bluelight)}
+.hero-trust{display:flex;gap:28px;opacity:0;animation:fu .7s var(--ease) .9s forwards}
+.ht{display:flex;align-items:center;gap:8px}
+.ht-num{font-size:22px;font-weight:900;letter-spacing:-1px;color:var(--navy)}
+.ht-num b{color:var(--blue)}
+.ht-lbl{font-size:11px;color:var(--light);line-height:1.35}
+.ht-sep{width:1px;height:32px;background:var(--bd)}
+
+/* Appointment card on right */
+.appt-card{
+  background:#fff;border:1px solid var(--bd);border-radius:16px;
+  padding:28px;box-shadow:0 8px 32px rgba(13,27,62,.06);
+  position:relative;z-index:1;
+  opacity:0;animation:fu .9s var(--ease) .6s forwards;
+}
+.appt-card-title{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.3px;margin-bottom:6px}
+.appt-card-sub{font-size:12.5px;color:var(--muted);margin-bottom:22px}
+.appt-field{margin-bottom:14px}
+.appt-field label{display:block;font-size:11px;font-weight:600;color:var(--slate);margin-bottom:6px;letter-spacing:.3px;text-transform:uppercase}
+.appt-field-val{
+  width:100%;padding:12px 14px;
+  background:var(--s0);border:1.5px solid var(--bd);border-radius:8px;
+  font-size:13.5px;font-weight:500;color:var(--navy);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.appt-field-val span{font-size:12px;color:var(--light)}
+.appt-specialties{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.appt-sp{
+  padding:10px 12px;background:var(--s0);border:1.5px solid var(--bd);border-radius:8px;
+  font-size:12px;font-weight:500;color:var(--slate);
+  display:flex;align-items:center;gap:6px;cursor:pointer;
+  transition:all .2s;
+}
+.appt-sp:hover,.appt-sp.active{background:var(--bluelight);border-color:var(--blue2);color:var(--blue)}
+.appt-sp-icon{font-size:14px}
+.appt-btn{
+  width:100%;padding:14px;background:var(--blue);color:#fff;
+  border-radius:10px;font-size:14px;font-weight:700;text-align:center;
+  cursor:pointer;transition:all .3s;
+  box-shadow:0 4px 16px rgba(21,112,239,.25);display:block;
+}
+.appt-btn:hover{background:#1148C8;transform:translateY(-1px);box-shadow:0 8px 28px rgba(21,112,239,.4)}
+.appt-note{font-size:11px;color:var(--light);text-align:center;margin-top:10px}
+/* info box */
+.info-box{
+  background:#fff;border:1px solid var(--bd);border-radius:12px;padding:18px 20px;
+  display:flex;align-items:flex-start;gap:14px;
+  position:relative;z-index:1;
+  opacity:0;animation:fu .9s var(--ease) .8s forwards;
+}
+.info-box-icon{width:36px;height:36px;border-radius:8px;background:var(--bluelight);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.info-box-t{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.info-box-d{font-size:12px;color:var(--muted);line-height:1.55}
+/* rating box */
+.rating-box{
+  background:linear-gradient(135deg,var(--navy),#1A3266);
+  border-radius:12px;padding:18px 20px;
+  display:flex;align-items:center;gap:16px;
+  position:relative;z-index:1;
+  opacity:0;animation:fu .9s var(--ease) 1s forwards;
+}
+.rb-stars{font-size:18px;color:#F6C026;letter-spacing:2px}
+.rb-t{font-size:22px;font-weight:900;letter-spacing:-1px;color:#fff}
+.rb-d{font-size:11.5px;color:rgba(255,255,255,.5);margin-top:1px}
+
+/* ══ ESPECIALIDADES — TABS ══ */
+.tabs-wrap{border-bottom:1px solid var(--bd);margin-top:56px}
+.tabs{display:flex;gap:0;overflow-x:auto}
+.tab-btn{
+  padding:14px 22px;font-size:13px;font-weight:600;color:var(--muted);
+  border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;cursor:pointer;
+}
+.tab-btn.active,.tab-btn:hover{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-panel{display:none;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:28px}
+.tab-panel.active{display:grid}
+.esp-card{
+  background:#fff;border:1.5px solid var(--bd);border-radius:14px;
+  padding:24px 20px;transition:all .3s var(--ease);
+}
+.esp-card:hover{border-color:var(--blue2);transform:translateY(-3px);box-shadow:0 12px 32px rgba(21,112,239,.1)}
+.esp-icon{font-size:28px;margin-bottom:12px;display:block}
+.esp-name{font-size:14px;font-weight:800;color:var(--navy);letter-spacing:-.2px;margin-bottom:6px}
+.esp-desc{font-size:12px;color:var(--muted);line-height:1.65}
+
+/* ══ TIMELINE ══ */
+.sec{padding:96px 0}
+.wrap{max-width:1050px;margin:0 auto;padding:0 56px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:16px;height:1.5px;background:var(--blue)}
+.sec-h2{font-size:clamp(34px,4vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.02;margin-bottom:14px;color:var(--navy)}
+.sec-sub{font-size:15px;color:var(--muted);line-height:1.75;max-width:440px}
+.divider{height:1px;max-width:1050px;margin:0 auto;background:var(--bd)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+.tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:60px}
+.tl-visual{background:var(--s0);border:1px solid var(--bd);border-radius:20px;padding:40px}
+.tl-step{display:flex;gap:20px;margin-bottom:0}
+.tl-step-left{display:flex;flex-direction:column;align-items:center}
+.tl-circle{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;
+  box-shadow:0 4px 16px rgba(21,112,239,.3);
+}
+.tl-line{flex:1;width:2px;background:var(--bd);margin:8px auto;min-height:32px}
+.tl-step:last-child .tl-line{display:none}
+.tl-step-body{padding-bottom:32px;padding-top:8px}
+.tl-step-t{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.2px}
+.tl-step-d{font-size:13px;color:var(--muted);line-height:1.7}
+.tl-content .sec-h2{margin-bottom:20px}
+.tl-feat-list{display:flex;flex-direction:column;gap:0}
+.tl-feat{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--bd)}
+.tl-feat:last-child{border-bottom:none}
+.tl-feat-ck{width:22px;height:22px;border-radius:7px;background:var(--bluelight);border:1px solid rgba(21,112,239,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--blue);flex-shrink:0;font-weight:700}
+.tl-feat span{font-size:14px;font-weight:500;color:var(--slate)}
+
+/* ══ EQUIPE ══ */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.doc-card{
+  border:1.5px solid var(--bd);border-radius:16px;overflow:hidden;
+  transition:all .35s var(--ease);
+}
+.doc-card:hover{border-color:var(--blue2);box-shadow:0 16px 40px rgba(21,112,239,.1)}
+.doc-header{
+  padding:28px 24px 20px;
+  display:flex;align-items:flex-start;gap:14px;
+  border-bottom:1px solid var(--bd);
+  background:var(--s0);
+}
+.doc-av{
+  width:56px;height:56px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:900;color:#fff;
+  position:relative;
+}
+.doc-av::after{
+  content:'✓';position:absolute;bottom:-4px;right:-4px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--grn);color:#fff;font-size:9px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;border:2px solid #fff;
+}
+.doc-name{font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.2px;margin-bottom:3px}
+.doc-esp{font-size:12px;font-weight:700;color:var(--blue)}
+.doc-crm{font-size:11px;color:var(--light);margin-top:3px}
+.doc-body{padding:20px 24px}
+.doc-bio{font-size:12.5px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.doc-tag{
+  display:inline-block;font-size:10px;font-weight:700;
+  background:var(--bluelight);color:var(--blue);
+  padding:4px 10px;border-radius:100px;letter-spacing:.5px;
+  margin-right:4px;margin-bottom:4px;
+}
+
+/* ══ DEPOIMENTOS ══ */
+.dep-bg{background:var(--navy);padding:96px 0;margin:0}
+.dep-bg .wrap{max-width:1050px;margin:0 auto;padding:0 56px}
+.dep-bg .eyebrow{color:var(--blue2)}
+.dep-bg .sec-h2{color:#fff;margin-bottom:48px}
+.dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dep{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px;transition:all .3s}
+.dep:hover{background:rgba(255,255,255,.08);border-color:rgba(21,112,239,.3);transform:translateY(-3px)}
+.dep-stars{font-size:12px;color:#F6C026;letter-spacing:2px;margin-bottom:14px}
+.dep-q{font-size:14px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:18px;font-style:italic}
+.dep-q::before{content:'\201C'}.dep-q::after{content:'\201D'}
+.dep-auth{display:flex;align-items:center;gap:10px}
+.dep-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+.dep-name{font-size:13px;font-weight:700;color:#fff}
+.dep-role{font-size:11px;color:rgba(255,255,255,.4);margin-top:1px}
+
+/* ══ CTA ══ */
+.cta-wrap{background:#fff;padding:96px 0}
+.cta-card{
+  max-width:780px;margin:0 auto;padding:0 56px;
+  display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;
+}
+.cta-left .eyebrow{margin-bottom:12px}
+.cta-h2{font-size:clamp(32px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.05;color:var(--navy);margin-bottom:12px}
+.cta-h2 span{color:var(--blue)}
+.cta-sub{font-size:15px;color:var(--muted);line-height:1.7}
+.cta-right{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn-wpp{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-size:15px;font-weight:800;padding:16px 28px;border-radius:10px;box-shadow:0 4px 18px rgba(37,211,102,.25);transition:all .3s var(--ease);white-space:nowrap}
+.btn-wpp:hover{background:#2dd971;transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.4)}
+.cta-note{font-size:12px;color:var(--light)}
+
+/* ══ FOOTER ══ */
+.footer{padding:32px 56px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.f-brand{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;color:var(--navy)}
+.f-brand span{color:var(--blue)}
+.f-links{display:flex;gap:20px}
+.f-links a{font-size:12px;color:var(--light);transition:color .2s}
+.f-links a:hover{color:var(--blue)}
+.f-copy{font-size:12px;color:var(--light)}
+.badge-back{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--bd);border-radius:100px;padding:6px 14px;font-size:11px;color:var(--muted);transition:all .25s}
+.badge-back:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ══ WPP ══ */
+.wpp{position:fixed;bottom:28px;right:28px;z-index:98;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);animation:wP 3s ease-in-out infinite;transition:transform .3s}
+.wpp:hover{transform:scale(1.1)}
+@keyframes wP{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.2)}50%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 12px rgba(37,211,102,0)}}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .nav{padding:0 24px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:60px 24px 48px}
+  .hero-right{border-left:none;border-top:1px solid var(--bd);padding:36px 24px}
+  .tab-panel.active{grid-template-columns:repeat(2,1fr)}
+  .tl-grid{grid-template-columns:1fr;gap:40px}
+  .team-grid{grid-template-columns:1fr}
+  .dep-grid{grid-template-columns:1fr}
+  .cta-card{grid-template-columns:1fr;gap:28px;padding:0 24px}
+  .wrap{padding:0 24px}
+  .footer{padding:28px 24px;flex-direction:column;align-items:flex-start;gap:12px}
+  .dep-bg .wrap{padding:0 24px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero-h1{font-size:clamp(38px,10vw,56px)}
+  .appt-specialties{grid-template-columns:1fr 1fr}
+  .hero-trust{flex-wrap:wrap;gap:18px}
+  .tab-panel.active{grid-template-columns:1fr}
+}
+/* ── DASHBOARD PORTAL DE CONSULTAS ── */
+.cl-db-sec{padding:96px 0;background:#F0F6FF;overflow-x:hidden}
+.cl-db-wrap{max-width:1080px;margin:0 auto;padding:0 56px}
+.cl-db-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.cl-db-hdg{font-size:clamp(26px,3.2vw,40px);font-weight:800;color:var(--navy);line-height:1.2;letter-spacing:-.5px}
+.cl-db-hdg span{color:var(--blue)}
+.cl-db-ey{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.cl-tabs-wrap{display:flex;gap:5px;background:#fff;border:1px solid rgba(13,27,62,.1);border-radius:12px;padding:5px;flex-wrap:wrap}
+.cl-db-tab{padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:rgba(13,27,62,.45);border:none;background:transparent;font-family:inherit}
+.cl-db-tab.active{background:var(--blue);color:#fff;box-shadow:0 2px 10px rgba(21,112,239,.25)}
+.cl-db-body{display:none}.cl-db-body.active{display:block}
+.cl-agd-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.cl-sub-hd{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(13,27,62,.35);margin-bottom:12px}
+.cl-specs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:22px}
+.cl-spec{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;cursor:pointer;border:1.5px solid rgba(13,27,62,.08);background:#fff;transition:all .18s}
+.cl-spec:hover{border-color:rgba(21,112,239,.3)}
+.cl-spec.active{border-color:var(--blue);background:#EFF6FF}
+.cl-spec-ico{font-size:16px;width:24px;text-align:center}
+.cl-spec-txt{font-size:12px;font-weight:600;color:var(--navy);line-height:1.2}
+.cl-docs-mini{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:4px}
+.cl-dm{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;cursor:pointer;border:1.5px solid rgba(13,27,62,.08);background:#fff;transition:all .18s}
+.cl-dm:hover{border-color:rgba(21,112,239,.3)}
+.cl-dm.active{border-color:var(--blue);background:#EFF6FF}
+.cl-dm-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.cl-dm-nm{font-size:11.5px;font-weight:700;color:var(--navy);letter-spacing:-.2px}
+.cl-dm-crm{font-size:9.5px;color:rgba(13,27,62,.38)}
+.cl-cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cl-cal-lbl{font-size:13px;font-weight:700;color:var(--navy)}
+.cl-cal-btn{width:28px;height:28px;border-radius:6px;border:1px solid rgba(13,27,62,.1);background:#fff;color:var(--blue);font-size:16px;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center}
+.cl-cal-btn:hover{background:var(--blue);color:#fff}
+.cl-cal-wd{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:5px}
+.cl-cal-wd span{text-align:center;font-size:9px;font-weight:600;color:rgba(13,27,62,.3);letter-spacing:.3px;padding:3px 0;text-transform:uppercase}
+.cl-cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:14px}
+.cl-cday{min-height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--navy)}
+.cl-cday.empty,.cl-cday.past{color:rgba(13,27,62,.18);cursor:default}
+.cl-cday.free{background:#EFF6FF;border:1px solid rgba(21,112,239,.15)}
+.cl-cday.free:hover{background:#DBEAFE;border-color:rgba(21,112,239,.4)}
+.cl-cday.today{background:#EFF6FF;font-weight:700;color:var(--blue);box-shadow:0 0 0 2px var(--blue)}
+.cl-cday.sel{background:var(--blue)!important;color:#fff!important;font-weight:700}
+.cl-times{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:16px}
+.cl-tslot{padding:9px 4px;border-radius:6px;text-align:center;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .15px;border:1.5px solid rgba(13,27,62,.1);color:var(--navy);background:#fff}
+.cl-tslot:hover{border-color:var(--blue);background:#EFF6FF}
+.cl-tslot.busy{color:rgba(13,27,62,.22);cursor:default;text-decoration:line-through;background:#f7f7f7;border-color:transparent}
+.cl-tslot.sel{background:var(--blue)!important;color:#fff!important;border-color:var(--blue)!important}
+.cl-form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.cl-inp{width:100%;padding:10px 14px;border-radius:8px;border:1.5px solid rgba(13,27,62,.12);font-size:13px;color:var(--navy);background:#fff;outline:none;font-family:inherit;box-sizing:border-box;transition:border-color .2s}
+.cl-inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,112,239,.1)}
+.cl-confirm-btn{width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;letter-spacing:.2px}
+.cl-confirm-btn:hover{background:#1055D4;transform:translateY(-1px);box-shadow:0 6px 20px rgba(21,112,239,.3)}
+.cl-docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cl-doc-card{background:#fff;border-radius:12px;border:1px solid rgba(13,27,62,.07);padding:22px;text-align:center;transition:all .22s}
+.cl-doc-card:hover{border-color:rgba(21,112,239,.22);box-shadow:0 8px 24px rgba(13,27,62,.06);transform:translateY(-3px)}
+.cl-doc-av2{width:56px;height:56px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}
+.cl-doc-name2{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.cl-doc-spec2{font-size:11.5px;color:var(--blue);font-weight:600;margin-bottom:5px}
+.cl-doc-crm2{font-size:10.5px;color:rgba(13,27,62,.38);margin-bottom:10px}
+.cl-doc-st{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:20px}
+.cl-doc-st.ok{background:#DCFCE7;color:#16A34A}
+.cl-doc-st.full{background:#FEF3C7;color:#D97706}
+.cl-doc-rat{font-size:11px;color:rgba(13,27,62,.4);margin-top:8px}
+.cl-doc-cta2{display:block;margin-top:12px;padding:8px;background:#EFF6FF;color:var(--blue);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;width:100%;transition:all .2s;text-decoration:none;font-family:inherit;box-sizing:border-box}
+.cl-doc-cta2:hover{background:var(--blue);color:#fff}
+@media(max-width:860px){.cl-agd-grid{grid-template-columns:1fr}.cl-docs-grid{grid-template-columns:repeat(2,1fr)}.cl-db-wrap{padding:0 24px}.cl-db-top{flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.cl-docs-grid{grid-template-columns:1fr}.cl-specs{grid-template-columns:1fr}.cl-docs-mini{grid-template-columns:1fr}.cl-form-row{grid-template-columns:1fr}.cl-times{grid-template-columns:repeat(2,1fr)}.cl-db-sec{padding:64px 0}.cl-db-tab{padding:9px 12px;font-size:12px}.cl-cal-wd span{font-size:8px}.cl-cday{font-size:10px;min-height:28px}}
+</style>
+</head>
+<body>
+
+<a class="wpp" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2 22l4.941-1.42A9.96 9.96 0 0011.999 22C17.522 22 22 17.523 22 12S17.522 2 11.999 2z"/></svg>
+</a>
+
+<nav class="nav" id="nav">
+  <div class="nav-brand">
+    <div class="nav-cross">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
+    <div class="nav-brand-name">Saúde<span>Plena</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#especialidades">Especialidades</a>
+    <a href="#processo">Processo</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#depoimentos">Depoimentos</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:+5571986933096">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6"/></svg>
+      (71) 98693-3096
+    </a>
+    <a class="nav-btn" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">Agendar</a>
+  </div>
+</nav>
+
+<!-- HERO SPLIT -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="h-available">
+      <div class="h-dot"></div>
+      <span>Consultas disponíveis esta semana</span>
+    </div>
+    <h1 class="hero-h1">Cuidando de você<br>com <span>excelência.</span></h1>
+    <p class="hero-desc">Clínica multiespecialidade com equipe qualificada, tecnologia moderna e atendimento humanizado que coloca o paciente em primeiro lugar.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2 22l4.941-1.42A9.96 9.96 0 0011.999 22C17.522 22 22 17.523 22 12S17.522 2 11.999 2z"/></svg>
+        Agendar Consulta
+      </a>
+      <a class="btn-secondary" href="#especialidades">Ver Especialidades →</a>
+    </div>
+    <div class="hero-trust">
+      <div class="ht"><div class="ht-num">15<b>+</b></div><div class="ht-lbl">Especialidades<br>disponíveis</div></div>
+      <div class="ht-sep"></div>
+      <div class="ht"><div class="ht-num">200<b>+</b></div><div class="ht-lbl">Pacientes<br>por mês</div></div>
+      <div class="ht-sep"></div>
+      <div class="ht"><div class="ht-num">4.9<b>★</b></div><div class="ht-lbl">Avaliação<br>Google</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="appt-card">
+      <div class="appt-card-title">Agendar Consulta</div>
+      <div class="appt-card-sub">Escolha a especialidade e fale conosco</div>
+      <div class="appt-specialties">
+        <div class="appt-sp active"><span class="appt-sp-icon">🧠</span>Neurologia</div>
+        <div class="appt-sp"><span class="appt-sp-icon">❤️</span>Cardiologia</div>
+        <div class="appt-sp"><span class="appt-sp-icon">🦴</span>Ortopedia</div>
+        <div class="appt-sp"><span class="appt-sp-icon">🦷</span>Odontologia</div>
+        <div class="appt-sp"><span class="appt-sp-icon">👁️</span>Oftalmologia</div>
+        <div class="appt-sp"><span class="appt-sp-icon">🩺</span>Geral</div>
+      </div>
+      <a class="appt-btn" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">Falar no WhatsApp →</a>
+      <p class="appt-note">Resposta em até 30 minutos</p>
+    </div>
+    <div class="info-box">
+      <div class="info-box-icon">📍</div>
+      <div>
+        <div class="info-box-t">Salvador, Bahia</div>
+        <div class="info-box-d">Seg – Sex, 7h–19h · Sáb, 8h–13h<br>Estacionamento gratuito</div>
+      </div>
+    </div>
+    <div class="rating-box">
+      <div>
+        <div class="rb-stars">★★★★★</div>
+        <div class="rb-d">Avaliação Google</div>
+      </div>
+      <div>
+        <div class="rb-t">4.9</div>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.4);margin-left:auto">+320<br>avaliações</div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES COM TABS -->
+<section class="sec" id="especialidades">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Especialidades</div>
+      <h2 class="sec-h2">Cuidado completo<br>para toda a família.</h2>
+    </div>
+    <div class="tabs-wrap rv">
+      <div class="tabs">
+        <div class="tab-btn active" data-tab="0">Todas</div>
+        <div class="tab-btn" data-tab="1">Medicina</div>
+        <div class="tab-btn" data-tab="2">Odontologia</div>
+        <div class="tab-btn" data-tab="3">Diagnóstico</div>
+      </div>
+    </div>
+    <div class="tab-panel active rv" id="tab0">
+      <div class="esp-card"><span class="esp-icon">🧠</span><div class="esp-name">Neurologia</div><div class="esp-desc">Enxaqueca, epilepsia, AVC e doenças neurodegenerativas.</div></div>
+      <div class="esp-card"><span class="esp-icon">❤️</span><div class="esp-name">Cardiologia</div><div class="esp-desc">Avaliação completa com ECG, ecocardiograma e acompanhamento.</div></div>
+      <div class="esp-card"><span class="esp-icon">🦴</span><div class="esp-name">Ortopedia</div><div class="esp-desc">Lesões esportivas, articulações, coluna e reabilitação.</div></div>
+      <div class="esp-card"><span class="esp-icon">🦷</span><div class="esp-name">Odontologia</div><div class="esp-desc">Clareamento, implantes, ortodontia e estética dental.</div></div>
+      <div class="esp-card"><span class="esp-icon">👁️</span><div class="esp-name">Oftalmologia</div><div class="esp-desc">Exames de vista, glaucoma, catarata e cirurgia refrativa.</div></div>
+      <div class="esp-card"><span class="esp-icon">🩺</span><div class="esp-name">Clínica Geral</div><div class="esp-desc">Check-up, exames preventivos e acompanhamento de saúde.</div></div>
+      <div class="esp-card"><span class="esp-icon">🧬</span><div class="esp-name">Endocrinologia</div><div class="esp-desc">Diabetes, tireoide, obesidade e distúrbios hormonais.</div></div>
+      <div class="esp-card"><span class="esp-icon">👶</span><div class="esp-name">Pediatria</div><div class="esp-desc">Desenvolvimento infantil, vacinas e acompanhamento pediátrico.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESSO — TIMELINE -->
+<section class="sec" id="processo">
+  <div class="wrap">
+    <div class="tl-grid">
+      <div class="tl-visual rv">
+        <div class="tl-step">
+          <div class="tl-step-left"><div class="tl-circle">1</div><div class="tl-line"></div></div>
+          <div class="tl-step-body"><div class="tl-step-t">Agende pelo WhatsApp</div><div class="tl-step-d">Escolha a especialidade e o horário preferido. Confirmação em minutos.</div></div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-step-left"><div class="tl-circle">2</div><div class="tl-line"></div></div>
+          <div class="tl-step-body"><div class="tl-step-t">Leve seus documentos</div><div class="tl-step-d">RG, CPF e cartão de convênio. Chegue 10 minutos antes.</div></div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-step-left"><div class="tl-circle">3</div><div class="tl-line"></div></div>
+          <div class="tl-step-body"><div class="tl-step-t">Consulta especializada</div><div class="tl-step-d">Atendimento completo e humanizado, sem pressa.</div></div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-step-left"><div class="tl-circle">4</div></div>
+          <div class="tl-step-body"><div class="tl-step-t">Receitas e laudos digitais</div><div class="tl-step-d">Documentos via WhatsApp. Acompanhamento pós-consulta incluso.</div></div>
+        </div>
+      </div>
+      <div class="tl-content rv d1">
+        <div class="eyebrow">Como Funciona</div>
+        <h2 class="sec-h2">Do agendamento ao laudo em 4 passos.</h2>
+        <p class="sec-sub" style="margin-bottom:28px">Simples, rápido e sem complicação. Pensamos em cada detalhe para tornar sua experiência a melhor possível.</p>
+        <div class="tl-feat-list">
+          <div class="tl-feat"><div class="tl-feat-ck">✓</div><span>Convênios e particular aceitos</span></div>
+          <div class="tl-feat"><div class="tl-feat-ck">✓</div><span>Estacionamento gratuito</span></div>
+          <div class="tl-feat"><div class="tl-feat-ck">✓</div><span>Teleconsulta disponível</span></div>
+          <div class="tl-feat"><div class="tl-feat-ck">✓</div><span>Acessível para PcD</span></div>
+        </div>
+        <div style="margin-top:28px">
+          <a class="btn-primary" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer" style="font-size:14px;padding:13px 24px">Agendar agora →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DASHBOARD — PORTAL DE CONSULTAS ══ -->
+<section class="cl-db-sec" id="portal">
+  <div class="cl-db-wrap">
+    <div class="cl-db-top rv">
+      <div>
+        <div class="cl-db-ey">Portal de Consultas</div>
+        <div class="cl-db-hdg">Cuide da sua saúde.<br><span>Agende agora.</span></div>
+      </div>
+      <div class="cl-tabs-wrap">
+        <button class="cl-db-tab active" onclick="clDbTab(this,'cl-agd')">Agendar Consulta</button>
+        <button class="cl-db-tab" onclick="clDbTab(this,'cl-esp')">Nossos Especialistas</button>
+      </div>
+    </div>
+
+    <div class="cl-db-body active" id="cl-agd">
+      <div class="cl-agd-grid">
+        <div>
+          <div class="cl-sub-hd">Especialidade</div>
+          <div class="cl-specs" id="clSpecs">
+            <div class="cl-spec active" data-sp="Cardiologia"><span class="cl-spec-ico">❤️</span><span class="cl-spec-txt">Cardiologia</span></div>
+            <div class="cl-spec" data-sp="Ortopedia"><span class="cl-spec-ico">🦴</span><span class="cl-spec-txt">Ortopedia</span></div>
+            <div class="cl-spec" data-sp="Dermatologia"><span class="cl-spec-ico">🧴</span><span class="cl-spec-txt">Dermatologia</span></div>
+            <div class="cl-spec" data-sp="Neurologia"><span class="cl-spec-ico">🧠</span><span class="cl-spec-txt">Neurologia</span></div>
+            <div class="cl-spec" data-sp="Pediatria"><span class="cl-spec-ico">👶</span><span class="cl-spec-txt">Pediatria</span></div>
+            <div class="cl-spec" data-sp="Clínica Geral"><span class="cl-spec-ico">🩺</span><span class="cl-spec-txt">Clínica Geral</span></div>
+          </div>
+          <div class="cl-sub-hd">Médico</div>
+          <div class="cl-docs-mini" id="clDocsMini"></div>
+        </div>
+        <div>
+          <div class="cl-sub-hd">Data</div>
+          <div class="cl-cal-nav">
+            <button class="cl-cal-btn" id="clPrev">&#8249;</button>
+            <span class="cl-cal-lbl" id="clCalLbl"></span>
+            <button class="cl-cal-btn" id="clNext">&#8250;</button>
+          </div>
+          <div class="cl-cal-wd"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+          <div class="cl-cal-days" id="clCalDays"></div>
+          <div class="cl-sub-hd">Horário Disponível</div>
+          <div class="cl-times" id="clTimes"></div>
+          <div class="cl-form-row">
+            <input class="cl-inp" id="clNome" type="text" placeholder="Seu nome completo">
+            <input class="cl-inp" id="clFone" type="tel" placeholder="(00) 00000-0000">
+          </div>
+          <a class="cl-confirm-btn" id="clConfirmBtn" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378L.057 22l1.649-4.862a9.87 9.87 0 01-1.344-4.976c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            Confirmar Agendamento
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cl-db-body" id="cl-esp">
+      <div class="cl-docs-grid">
+        <div class="cl-doc-card">
+          <div class="cl-doc-av2" style="background:linear-gradient(135deg,#1570EF,#0D1B3E)">RM</div>
+          <div class="cl-doc-name2">Dr. Ricardo Matos</div>
+          <div class="cl-doc-spec2">Cardiologista</div>
+          <div class="cl-doc-crm2">CRM/BA 45.231 · 14 anos de exp.</div>
+          <span class="cl-doc-st ok">● Disponível hoje</span>
+          <div class="cl-doc-rat">★★★★★ 4.9 · 120 avaliações</div>
+          <a class="cl-doc-cta2" href="#portal" onclick="clDbTab(document.querySelectorAll('.cl-db-tab')[0],'cl-agd')">Agendar consulta</a>
+        </div>
+        <div class="cl-doc-card">
+          <div class="cl-doc-av2" style="background:linear-gradient(135deg,#17B26A,#064E3B)">AS</div>
+          <div class="cl-doc-name2">Dra. Ana Souza</div>
+          <div class="cl-doc-spec2">Dermatologista</div>
+          <div class="cl-doc-crm2">CRM/BA 38.109 · 9 anos de exp.</div>
+          <span class="cl-doc-st ok">● Disponível hoje</span>
+          <div class="cl-doc-rat">★★★★★ 5.0 · 87 avaliações</div>
+          <a class="cl-doc-cta2" href="#portal" onclick="clDbTab(document.querySelectorAll('.cl-db-tab')[0],'cl-agd')">Agendar consulta</a>
+        </div>
+        <div class="cl-doc-card">
+          <div class="cl-doc-av2" style="background:linear-gradient(135deg,#7C3AED,#2E1065)">CF</div>
+          <div class="cl-doc-name2">Dr. Carlos Ferreira</div>
+          <div class="cl-doc-spec2">Neurologista</div>
+          <div class="cl-doc-crm2">CRM/BA 52.874 · 18 anos de exp.</div>
+          <span class="cl-doc-st full">● Agenda lotada hoje</span>
+          <div class="cl-doc-rat">★★★★½ 4.8 · 203 avaliações</div>
+          <a class="cl-doc-cta2" href="#portal" onclick="clDbTab(document.querySelectorAll('.cl-db-tab')[0],'cl-agd')">Agendar consulta</a>
+        </div>
+        <div class="cl-doc-card">
+          <div class="cl-doc-av2" style="background:linear-gradient(135deg,#F59E0B,#78350F)">PL</div>
+          <div class="cl-doc-name2">Dra. Paula Lima</div>
+          <div class="cl-doc-spec2">Ortopedista</div>
+          <div class="cl-doc-crm2">CRM/BA 41.665 · 12 anos de exp.</div>
+          <span class="cl-doc-st ok">● Disponível hoje</span>
+          <div class="cl-doc-rat">★★★★★ 4.9 · 156 avaliações</div>
+          <a class="cl-doc-cta2" href="#portal" onclick="clDbTab(document.querySelectorAll('.cl-db-tab')[0],'cl-agd')">Agendar consulta</a>
+        </div>
+        <div class="cl-doc-card">
+          <div class="cl-doc-av2" style="background:linear-gradient(135deg,#EF4444,#7F1D1D)">MO</div>
+          <div class="cl-doc-name2">Dr. Marcos Oliveira</div>
+          <div class="cl-doc-spec2">Pediatra</div>
+          <div class="cl-doc-crm2">CRM/BA 29.443 · 22 anos de exp.</div>
+          <span class="cl-doc-st ok">● Disponível hoje</span>
+          <div class="cl-doc-rat">★★★★★ 5.0 · 340 avaliações</div>
+          <a class="cl-doc-cta2" href="#portal" onclick="clDbTab(document.querySelectorAll('.cl-db-tab')[0],'cl-agd')">Agendar consulta</a>
+        </div>
+        <div class="cl-doc-card">
+          <div class="cl-doc-av2" style="background:linear-gradient(135deg,#0EA5E9,#0C4A6E)">JC</div>
+          <div class="cl-doc-name2">Dra. Juliana Costa</div>
+          <div class="cl-doc-spec2">Clínica Geral</div>
+          <div class="cl-doc-crm2">CRM/BA 61.002 · 6 anos de exp.</div>
+          <span class="cl-doc-st full">● Agenda lotada hoje</span>
+          <div class="cl-doc-rat">★★★★½ 4.7 · 95 avaliações</div>
+          <a class="cl-doc-cta2" href="#portal" onclick="clDbTab(document.querySelectorAll('.cl-db-tab')[0],'cl-agd')">Agendar consulta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+function clDbTab(btn,id){
+  document.querySelectorAll('.cl-db-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.cl-db-body').forEach(function(b){b.classList.remove('active');});
+  var el=document.getElementById(id);if(el)el.classList.add('active');
+}
+(function(){
+  var DOCS={
+    'Cardiologia':[{i:'RM',c:'linear-gradient(135deg,#1570EF,#0D1B3E)',n:'Dr. Ricardo Matos',crm:'CRM/BA 45.231'},
+                   {i:'MS',c:'linear-gradient(135deg,#0EA5E9,#0C4A6E)',n:'Dr. Marcelo Santos',crm:'CRM/BA 33.780'}],
+    'Ortopedia':[{i:'PL',c:'linear-gradient(135deg,#F59E0B,#78350F)',n:'Dra. Paula Lima',crm:'CRM/BA 41.665'},
+                 {i:'RT',c:'linear-gradient(135deg,#84CC16,#1A2E05)',n:'Dr. Roberto Torres',crm:'CRM/BA 28.990'}],
+    'Dermatologia':[{i:'AS',c:'linear-gradient(135deg,#17B26A,#064E3B)',n:'Dra. Ana Souza',crm:'CRM/BA 38.109'},
+                    {i:'CM',c:'linear-gradient(135deg,#F472B6,#701A75)',n:'Dra. Clara Melo',crm:'CRM/BA 57.334'}],
+    'Neurologia':[{i:'CF',c:'linear-gradient(135deg,#7C3AED,#2E1065)',n:'Dr. Carlos Ferreira',crm:'CRM/BA 52.874'},
+                  {i:'LV',c:'linear-gradient(135deg,#6366F1,#1E1B4B)',n:'Dra. Larissa Vieira',crm:'CRM/BA 44.120'}],
+    'Pediatria':[{i:'MO',c:'linear-gradient(135deg,#EF4444,#7F1D1D)',n:'Dr. Marcos Oliveira',crm:'CRM/BA 29.443'},
+                 {i:'FN',c:'linear-gradient(135deg,#F97316,#431407)',n:'Dra. Fernanda Nunes',crm:'CRM/BA 63.007'}],
+    'Clínica Geral':[{i:'JC',c:'linear-gradient(135deg,#0EA5E9,#0C4A6E)',n:'Dra. Juliana Costa',crm:'CRM/BA 61.002'},
+                     {i:'BR',c:'linear-gradient(135deg,#10B981,#064E3B)',n:'Dr. Bruno Rocha',crm:'CRM/BA 49.552'}]
+  };
+  var BUSY={0:[],1:['09:30','11:00','14:30'],2:['10:00','15:00'],3:['09:30','11:00','16:00'],4:['10:00','14:30'],5:['09:30','11:30'],6:['09:30','10:00','11:00','14:00','15:00']};
+  var TIMES=['08:00','09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
+  var MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  var sel={sp:'Cardiologia',doc:null,date:null,time:null};
+  var now=new Date(),cY=now.getFullYear(),cM=now.getMonth();
+  function renderDocs(){
+    var g=document.getElementById('clDocsMini');if(!g)return;
+    var docs=DOCS[sel.sp]||[];g.innerHTML='';
+    docs.forEach(function(d,i){
+      var e=document.createElement('div');
+      e.className='cl-dm'+(i===0?' active':'');
+      if(i===0)sel.doc=d.n;
+      e.innerHTML='<div class="cl-dm-av" style="background:'+d.c+'">'+d.i+'</div><div><div class="cl-dm-nm">'+d.n+'</div><div class="cl-dm-crm">'+d.crm+'</div></div>';
+      e.addEventListener('click',function(){
+        g.querySelectorAll('.cl-dm').forEach(function(x){x.classList.remove('active');});
+        e.classList.add('active');sel.doc=d.n;updateClSum();
+      });
+      g.appendChild(e);
+    });
+    updateClSum();
+  }
+  function renderClCal(){
+    var lbl=document.getElementById('clCalLbl'),g=document.getElementById('clCalDays');if(!lbl||!g)return;
+    lbl.textContent=MONTHS[cM]+' '+cY;
+    var fd=new Date(cY,cM,1).getDay(),dim=new Date(cY,cM+1,0).getDate();
+    var tod=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    g.innerHTML='';
+    for(var i=0;i<fd;i++){var e=document.createElement('div');e.className='cl-cday empty';g.appendChild(e);}
+    for(var d=1;d<=dim;d++){
+      var e=document.createElement('div'),dt=new Date(cY,cM,d),dw=dt.getDay();
+      var isPast=dt<tod,isSun=dw===0,cls='cl-cday';
+      if(isPast||isSun)cls+=' past';else cls+=' free';
+      if(d===now.getDate()&&cM===now.getMonth()&&cY===now.getFullYear())cls+=' today';
+      if(sel.date&&sel.date.d===d&&sel.date.m===cM&&sel.date.y===cY)cls+=' sel';
+      e.className=cls;e.textContent=d;
+      if(!isPast&&!isSun){
+        (function(dd,dw2){e.addEventListener('click',function(){sel.date={d:dd,m:cM,y:cY,dow:dw2};sel.time=null;renderClCal();renderTimes();updateClSum();});})(d,dw);
+      }
+      g.appendChild(e);
+    }
+  }
+  function renderTimes(){
+    var g=document.getElementById('clTimes');if(!g)return;
+    if(!sel.date){g.innerHTML='<div style="font-size:11px;color:rgba(13,27,62,.35);font-style:italic;grid-column:1/-1;padding:8px 0">← Selecione uma data primeiro</div>';return;}
+    var busy=BUSY[sel.date.dow]||[];g.innerHTML='';
+    TIMES.forEach(function(t){
+      var e=document.createElement('div'),isBusy=busy.indexOf(t)>=0;
+      e.className='cl-tslot '+(isBusy?'busy':'');
+      if(!isBusy&&sel.time===t)e.className+=' sel';
+      e.textContent=t;
+      if(!isBusy)e.addEventListener('click',function(){sel.time=t;renderTimes();updateClSum();});
+      g.appendChild(e);
+    });
+  }
+  function updateClSum(){
+    var btn=document.getElementById('clConfirmBtn');if(!btn)return;
+    var mm=sel.date?sel.date.m+1:0;
+    var msg=sel.date&&sel.time
+      ?'Olá! Quero agendar consulta de '+sel.sp+(sel.doc?' com '+sel.doc:'')+' no dia '+sel.date.d+'/'+(mm<10?'0'+mm:mm)+'/'+sel.date.y+' às '+sel.time+'.'
+      :'Olá! Gostaria de agendar uma consulta de '+sel.sp+'. Qual a disponibilidade?';
+    btn.href='https://wa.me/5571986933096?text='+encodeURIComponent(msg);
+  }
+  document.querySelectorAll('#clSpecs .cl-spec').forEach(function(el){
+    el.addEventListener('click',function(){
+      document.querySelectorAll('#clSpecs .cl-spec').forEach(function(e){e.classList.remove('active');});
+      el.classList.add('active');sel.sp=el.dataset.sp;sel.doc=null;renderDocs();
+    });
+  });
+  var prev=document.getElementById('clPrev'),next=document.getElementById('clNext');
+  if(prev)prev.addEventListener('click',function(){cM--;if(cM<0){cM=11;cY--;}renderClCal();});
+  if(next)next.addEventListener('click',function(){cM++;if(cM>11){cM=0;cY++;}renderClCal();});
+  var nome=document.getElementById('clNome'),fone=document.getElementById('clFone');
+  if(nome)nome.addEventListener('input',updateClSum);
+  if(fone)fone.addEventListener('input',updateClSum);
+  renderDocs();renderClCal();renderTimes();
+})();
+</script>
+
+<div class="divider"></div>
+
+<!-- EQUIPE -->
+<section class="sec" id="equipe">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Nossa Equipe</div>
+      <h2 class="sec-h2">Especialistas que se<br>dedicam a você.</h2>
+    </div>
+    <div class="team-grid">
+      <div class="doc-card rv">
+        <div class="doc-header">
+          <div class="doc-av" style="background:linear-gradient(135deg,var(--blue),#1148C8)">RA</div>
+          <div><div class="doc-name">Dr. Rafael Andrade</div><div class="doc-esp">Cardiologista</div><div class="doc-crm">CRM/BA 45.231</div></div>
+        </div>
+        <div class="doc-body">
+          <div class="doc-bio">15 anos em cardiologia clínica e preventiva. Especialista em doenças cardiovasculares e prevenção do infarto.</div>
+          <div class="doc-tag">Ecocardiograma</div><div class="doc-tag">ECG</div><div class="doc-tag">Holter</div>
+        </div>
+      </div>
+      <div class="doc-card rv d1">
+        <div class="doc-header">
+          <div class="doc-av" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)">CM</div>
+          <div><div class="doc-name">Dra. Camila Mendes</div><div class="doc-esp">Neurologista</div><div class="doc-crm">CRM/BA 38.912</div></div>
+        </div>
+        <div class="doc-body">
+          <div class="doc-bio">Especialista em enxaqueca, epilepsia e doenças neurodegenerativas. Formada na USP, residência no HC.</div>
+          <div class="doc-tag">Enxaqueca</div><div class="doc-tag">Epilepsia</div><div class="doc-tag">EEG</div>
+        </div>
+      </div>
+      <div class="doc-card rv d2">
+        <div class="doc-header">
+          <div class="doc-av" style="background:linear-gradient(135deg,#22C55E,#15803D)">LP</div>
+          <div><div class="doc-name">Dr. Lucas Pereira</div><div class="doc-esp">Ortopedista</div><div class="doc-crm">CRM/BA 52.104</div></div>
+        </div>
+        <div class="doc-body">
+          <div class="doc-bio">Cirurgião ortopédico com foco em lesões esportivas e artroplastia. Atende atletas profissionais.</div>
+          <div class="doc-tag">Joelho</div><div class="doc-tag">Ombro</div><div class="doc-tag">Coluna</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS dark bg -->
+<section class="dep-bg" id="depoimentos">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Depoimentos</div>
+      <h2 class="sec-h2">O que nossos pacientes<br>estão dizendo.</h2>
+    </div>
+    <div class="dep-grid">
+      <div class="dep rv"><div class="dep-stars">★★★★★</div><p class="dep-q">Atendimento impecável. Marquei pelo WhatsApp à noite e consegui consulta no dia seguinte. O Dr. Rafael é excelente.</p><div class="dep-auth"><div class="dep-av" style="background:linear-gradient(135deg,var(--blue),#1148C8)">AO</div><div><div class="dep-name">Ana Oliveira</div><div class="dep-role">Paciente · Cardiologia</div></div></div></div>
+      <div class="dep rv d1"><div class="dep-stars">★★★★★</div><p class="dep-q">Sofria de enxaqueca há anos. A Dra. Camila identificou o problema e hoje estou sem crises há 6 meses. Vida transformada!</p><div class="dep-auth"><div class="dep-av" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)">PL</div><div><div class="dep-name">Paulo Lima</div><div class="dep-role">Paciente · Neurologia</div></div></div></div>
+      <div class="dep rv d2"><div class="dep-stars">★★★★★</div><p class="dep-q">Trouxe minha mãe idosa e foi uma experiência maravilhosa. Estrutura acessível, equipe paciente. Nota 1000.</p><div class="dep-auth"><div class="dep-av" style="background:linear-gradient(135deg,#F59E0B,#B45309)">CS</div><div><div class="dep-name">Cláudia Santos</div><div class="dep-role">Familiar de paciente</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="cta-card rv">
+    <div class="cta-left">
+      <div class="eyebrow">Agendar consulta</div>
+      <div class="cta-h2">Sua saúde não<br>pode <span>esperar.</span></div>
+      <p class="cta-sub">Consultas disponíveis esta semana. Resposta imediata pelo WhatsApp.</p>
+    </div>
+    <div class="cta-right">
+      <a class="btn-wpp" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2 22l4.941-1.42A9.96 9.96 0 0011.999 22C17.522 22 22 17.523 22 12S17.522 2 11.999 2z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+      <span class="cta-note">Seg–Sex 7h–19h · Sáb 8h–13h</span>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="f-brand"><div class="nav-cross" style="width:24px;height:24px;border-radius:7px"><svg viewBox="0 0 16 16" fill="none" style="width:11px"><path d="M8 2v12M2 8h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div>Saúde<span>Plena</span></div>
+  <nav class="f-links">
+    <a href="#especialidades">Especialidades</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#depoimentos">Depoimentos</a>
+  </nav>
+  <div class="f-copy">© <span id="yr"></span> Clínica Saúde Plena</div>
+  <a class="badge-back" href="index.html">
+    <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M9 6H3M5.5 3.5L3 6l2.5 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Portfólio
+  </a>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('solid', window.scrollY > 10), {passive:true});
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target);} }), {threshold:.06});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+}));
+
+/* tabs */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+/* specialty card select */
+document.querySelectorAll('.appt-sp').forEach(sp => {
+  sp.addEventListener('click', () => {
+    document.querySelectorAll('.appt-sp').forEach(s => s.classList.remove('active'));
+    sp.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

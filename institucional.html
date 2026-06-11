@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Construtora Meridiano — Engenharia e Construção</title>
+<meta name="description" content="Construtora com 18 anos de experiência em obras residenciais, comerciais e industriais em Salvador.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E14;
+  --bg2:#0E1421;
+  --bg3:#131926;
+  --bd:#1E2A3D;
+  --bd2:#243350;
+  --amber:#E8B84B;
+  --amber2:#F5CC70;
+  --amberDim:rgba(232,184,75,.12);
+  --w:#F1F3F7;
+  --w2:#C5CEDF;
+  --muted:#6B7FA0;
+  --light:#3C4F6A;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--w);font-family:'Space Grotesk',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:var(--amber)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* NAV */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:60px;
+  border-bottom:1px solid var(--bd);
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,14,20,.95);backdrop-filter:blur(12px);
+}
+.nav-logo{display:flex;align-items:center;gap:16px}
+.nav-mark{width:3px;height:28px;background:var(--amber)}
+.nav-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--w)}
+.nav-since{font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--amber)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);border:1px solid rgba(232,184,75,.3);padding:6px 14px}
+.nav-btn{background:var(--amber);color:#000;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 22px;transition:all .25s}
+.nav-btn:hover{background:var(--amber2);transform:translateY(-1px)}
+
+/* HERO */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:grid;grid-template-columns:1fr 480px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(232,184,75,.03) 0%,transparent 50%,rgba(232,184,75,.02) 100%);
+  pointer-events:none;
+}
+.hero-main{
+  padding:80px 64px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-right:1px solid var(--bd);
+}
+.hero-top{flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:20px}
+.h-label{
+  display:inline-flex;align-items:center;gap:12px;
+  margin-bottom:40px;
+  opacity:0;animation:fu .7s var(--ease) .2s forwards;
+}
+.h-label-line{width:32px;height:1px;background:var(--amber)}
+.h-label-t{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--amber)}
+.hero-h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(72px,9vw,128px);
+  font-weight:900;line-height:.88;
+  letter-spacing:-2px;text-transform:uppercase;
+  color:var(--w);
+  margin-bottom:40px;
+  opacity:0;animation:fu .9s var(--ease) .4s forwards;
+}
+.hero-h1 em{font-style:italic;color:var(--amber)}
+.hero-desc{
+  font-size:15px;color:var(--muted);line-height:1.8;
+  max-width:420px;margin-bottom:48px;
+  opacity:0;animation:fu .8s var(--ease) .6s forwards;
+}
+.hero-btns{display:flex;gap:12px;opacity:0;animation:fu .7s var(--ease) .75s forwards}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--amber);color:#000;
+  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:15px 28px;transition:all .3s;
+}
+.btn-primary:hover{background:var(--amber2);transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--bd2);color:var(--w2);
+  font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  padding:15px 24px;transition:all .3s;
+}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+.hero-stats{
+  display:flex;border-top:1px solid var(--bd);padding-top:32px;gap:0;
+  opacity:0;animation:fu .7s var(--ease) .9s forwards;
+}
+.hs{flex:1;padding:0 32px 0 0;border-right:1px solid var(--bd)}
+.hs:last-child{border-right:none;padding-right:0;padding-left:32px}
+.hs-num{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;line-height:1;color:var(--amber);letter-spacing:-1px}
+.hs-lbl{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+.hero-side{padding:48px 40px;display:flex;flex-direction:column;gap:0;justify-content:space-between;background:var(--bg2)}
+.hs-section{padding:28px 0;border-bottom:1px solid var(--bd)}
+.hs-section:last-child{border-bottom:none}
+.hs-stitle{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.proj-list{display:flex;flex-direction:column;gap:12px}
+.proj-item{display:flex;align-items:center;gap:14px;cursor:pointer}
+.proj-num{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;color:var(--amber);border:1px solid rgba(232,184,75,.25);flex-shrink:0;transition:all .25s}
+.proj-item:hover .proj-num{background:var(--amber);color:#000}
+.proj-info{flex:1}
+.proj-name{font-size:13px;font-weight:600;color:var(--w);margin-bottom:2px}
+.proj-meta{font-size:11px;color:var(--muted)}
+.proj-arrow{font-size:14px;color:var(--light);transition:all .25s}
+.proj-item:hover .proj-arrow{color:var(--amber);transform:translateX(4px)}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cert{padding:10px 12px;border:1px solid var(--bd);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:all .25s}
+.cert:hover{border-color:rgba(232,184,75,.3);color:var(--amber)}
+
+/* TICKER */
+.ticker-wrap{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);overflow:hidden;padding:14px 0;background:var(--bg2)}
+.ticker{display:flex;gap:0;white-space:nowrap;animation:tk 22s linear infinite}
+@keyframes tk{to{transform:translateX(-50%)}}
+.ticker:hover{animation-play-state:paused}
+.t-item{display:inline-flex;align-items:center;gap:16px;padding:0 48px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.t-sep{color:var(--amber);font-size:16px}
+
+/* SECTIONS */
+.sec{padding:96px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 64px}
+.sec-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.sec-h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(44px,5vw,76px);font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:.92;color:var(--w)}
+.sec-sub{font-size:14px;color:var(--muted);line-height:1.8;max-width:340px;align-self:end}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ACCORDION */
+.acc-list{border-top:1px solid var(--bd)}
+.acc-item{border-bottom:1px solid var(--bd);overflow:hidden}
+.acc-head{display:flex;align-items:center;justify-content:space-between;padding:24px 0;cursor:pointer;transition:color .2s;user-select:none}
+.acc-head:hover .acc-title{color:var(--amber)}
+.acc-left{display:flex;align-items:center;gap:24px}
+.acc-num{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--light);width:30px}
+.acc-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--w);transition:color .25s}
+.acc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);border:1px solid rgba(232,184,75,.25);padding:4px 12px;margin-left:12px}
+.acc-icon{width:32px;height:32px;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all .3s;flex-shrink:0}
+.acc-item.open .acc-icon{background:var(--amber);border-color:var(--amber);color:#000;transform:rotate(45deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.acc-inner{padding:0 0 28px 54px;display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:start}
+.acc-desc{font-size:14px;color:var(--muted);line-height:1.85}
+.acc-feat-list{display:flex;flex-direction:column;gap:8px}
+.acc-feat{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--w2)}
+.acc-feat::before{content:'›';color:var(--amber);font-size:16px;font-weight:700}
+
+/* PROJETOS GRID */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bd)}
+.proj-card{padding:48px 40px;border-bottom:1px solid var(--bd);transition:background .3s;cursor:pointer;position:relative;overflow:hidden}
+.proj-card:nth-child(odd){border-right:1px solid var(--bd)}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.proj-card:hover{background:var(--bg2)}
+.proj-card:hover::before{transform:scaleX(1)}
+.pc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.pc-num{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;line-height:1;letter-spacing:-3px;color:transparent;-webkit-text-stroke:1px var(--light);transition:color .3s,-webkit-text-stroke .3s}
+.proj-card:hover .pc-num{color:var(--amber);-webkit-text-stroke:1px var(--amber)}
+.pc-type{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--amber);border:1px solid rgba(232,184,75,.25);padding:5px 12px}
+.pc-title{font-size:20px;font-weight:700;color:var(--w);letter-spacing:-.3px;margin-bottom:8px}
+.pc-meta{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:20px}
+.pc-pills{display:flex;flex-wrap:wrap;gap:6px}
+.pc-pill{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);border:1px solid var(--bd);padding:4px 10px}
+
+/* MANIFESTO */
+.manifest-wrap{padding:96px 64px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.mf-h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(48px,6vw,88px);font-weight:900;text-transform:uppercase;letter-spacing:-2px;line-height:.9;color:var(--w);margin-bottom:32px}
+.mf-body{display:flex;flex-direction:column;gap:16px}
+.mf-p{font-size:14px;color:var(--muted);line-height:1.85}
+.mf-p strong{color:var(--w);font-weight:600}
+.mf-right{display:flex;flex-direction:column;gap:0}
+.mf-metric{padding:28px 0;border-bottom:1px solid var(--bd);display:flex;align-items:baseline;gap:16px}
+.mf-metric:first-child{border-top:1px solid var(--bd)}
+.mf-metric-num{font-family:'Barlow Condensed',sans-serif;font-size:56px;font-weight:900;color:var(--amber);letter-spacing:-2px;line-height:1}
+.mf-metric-text{font-size:13px;color:var(--muted);line-height:1.55}
+.mf-metric-text strong{display:block;font-size:15px;font-weight:700;color:var(--w);margin-bottom:3px}
+
+/* DEPOIMENTOS */
+.dep-wrap{border-top:1px solid var(--bd);padding:96px 0}
+.dep-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bd)}
+.dep-card{padding:44px 40px;border-right:1px solid var(--bd);transition:background .3s}
+.dep-card:last-child{border-right:none}
+.dep-card:hover{background:var(--bg2)}
+.dep-open{font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:900;color:var(--amber);line-height:.7;margin-bottom:20px;display:block}
+.dep-q{font-size:14px;color:var(--w2);line-height:1.85;margin-bottom:24px;font-style:italic}
+.dep-line{width:32px;height:1px;background:var(--amber);margin-bottom:16px}
+.dep-name{font-size:14px;font-weight:700;color:var(--w);letter-spacing:-.2px}
+.dep-role{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+/* CTA */
+.cta-section{border-top:1px solid var(--bd);display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;padding:96px 64px;max-width:1100px;margin:0 auto}
+.cta-label{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.cta-label-line{width:32px;height:1px;background:var(--amber)}
+.cta-label-t{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--amber)}
+.cta-h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(44px,6vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:-2px;line-height:.9;color:var(--w);margin-bottom:16px}
+.cta-h2 em{font-style:italic;color:var(--amber)}
+.cta-sub{font-size:14px;color:var(--muted);line-height:1.7}
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn-wpp{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 28px;transition:all .3s;white-space:nowrap}
+.btn-wpp:hover{background:#2dd971;transform:translateY(-2px)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--bd);padding:32px 64px;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:32px}
+.f-logo{display:flex;align-items:center;gap:12px}
+.f-mark{width:3px;height:24px;background:var(--amber)}
+.f-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.f-links{display:flex;gap:24px}
+.f-links a{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.f-links a:hover{color:var(--amber)}
+.f-right{display:flex;align-items:center;gap:16px}
+.f-copy{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--light)}
+.badge-back{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--bd);padding:7px 16px;transition:all .25s}
+.badge-back:hover{border-color:rgba(232,184,75,.4);color:var(--amber)}
+
+/* WPP */
+.wpp{position:fixed;bottom:28px;right:28px;z-index:98;width:50px;height:50px;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);animation:wP 3s ease-in-out infinite;transition:transform .3s}
+.wpp:hover{transform:scale(1.1)}
+@keyframes wP{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.35),0 0 0 0 rgba(37,211,102,.2)}50%{box-shadow:0 4px 20px rgba(37,211,102,.35),0 0 0 12px rgba(37,211,102,0)}}
+
+@media(max-width:1024px){
+  .nav{padding:0 24px}
+  .hero{grid-template-columns:1fr}
+  .hero-side{border-top:1px solid var(--bd)}
+  .hero-main{padding:60px 24px;border-right:none}
+  .sec-header{grid-template-columns:1fr}
+  .acc-inner{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-card:nth-child(odd){border-right:none}
+  .manifest-wrap{grid-template-columns:1fr;gap:48px;padding:64px 24px}
+  .dep-grid{grid-template-columns:1fr}
+  .dep-card:first-child{border-right:none;border-bottom:1px solid var(--bd)}
+  .cta-section{grid-template-columns:1fr;gap:36px;padding:64px 24px}
+  .footer{grid-template-columns:1fr;gap:16px;padding:28px 24px}
+  .wrap{padding:0 24px}
+  .ticker-wrap{display:none}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero-h1{font-size:clamp(60px,16vw,90px)}
+  .hero-stats{flex-direction:column;gap:24px}
+  .hs{border-right:none;padding:0 0 24px;border-bottom:1px solid var(--bd)}
+  .hs:last-child{border-bottom:none;padding:0}
+}
+/* ── DASHBOARD CALCULADORA E OBRAS ── */
+.md-sec{padding:96px 0;background:#0A0F16;border-top:1px solid rgba(232,184,75,.1);border-bottom:1px solid rgba(232,184,75,.1);overflow-x:hidden}
+.md-wrap{max-width:1080px;margin:0 auto;padding:0 64px}
+.md-top{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.md-ey{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(232,184,75,.6);margin-bottom:10px}
+.md-hdg{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3.5vw,46px);font-weight:800;color:var(--w);text-transform:uppercase;letter-spacing:1px;line-height:1.1}
+.md-hdg em{color:var(--amber);font-style:normal}
+.md-tabs{display:flex;gap:3px;background:rgba(232,184,75,.04);border:1px solid rgba(232,184,75,.1);border-radius:10px;padding:4px;flex-wrap:wrap}
+.md-tab{padding:10px 18px;border-radius:7px;font-size:11.5px;font-weight:700;cursor:pointer;transition:all .2s;color:rgba(241,243,247,.35);border:none;background:transparent;letter-spacing:.8px;text-transform:uppercase;font-family:'Space Grotesk',sans-serif}
+.md-tab.active{background:rgba(232,184,75,.1);color:var(--amber);border:1px solid rgba(232,184,75,.25)}
+.md-db-body{display:none}.md-db-body.active{display:block}
+.md-calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.md-step-lbl{font-size:9.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(232,184,75,.5);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.md-step-lbl::before{content:attr(data-n);width:20px;height:20px;border-radius:4px;background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:var(--amber);flex-shrink:0;font-family:monospace}
+.md-type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:28px}
+.md-type{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border-radius:10px;cursor:pointer;border:1.5px solid rgba(232,184,75,.1);background:rgba(232,184,75,.03);transition:all .2s;text-align:center}
+.md-type:hover{background:rgba(232,184,75,.07);border-color:rgba(232,184,75,.2)}
+.md-type.active{background:rgba(232,184,75,.1);border-color:rgba(232,184,75,.35)}
+.md-type-ico{font-size:22px}
+.md-type-nm{font-size:12px;font-weight:800;color:var(--w);letter-spacing:.5px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;margin-bottom:5px}
+.md-type-sub{font-size:9.5px;color:rgba(241,243,247,.35);line-height:1.5}
+.md-range-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.md-range-lbl{font-size:12.5px;font-weight:600;color:var(--w)}
+.md-range-val{font-size:26px;font-weight:900;color:var(--amber);font-family:'Barlow Condensed',sans-serif;letter-spacing:-1px;line-height:1}
+.md-range-unit{font-size:13px;font-weight:600;color:rgba(232,184,75,.5)}
+.md-slider{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(232,184,75,.15);outline:none;cursor:pointer;margin-bottom:6px}
+.md-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--amber);cursor:pointer;border:3px solid #0A0F16;box-shadow:0 0 0 2px rgba(232,184,75,.3)}
+.md-range-marks{display:flex;justify-content:space-between;font-size:10px;color:rgba(241,243,247,.22);margin-bottom:24px}
+.md-std-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.md-std{padding:14px 8px;border-radius:10px;cursor:pointer;border:1.5px solid rgba(232,184,75,.1);background:rgba(232,184,75,.03);transition:all .2s;text-align:center}
+.md-std:hover{background:rgba(232,184,75,.07);border-color:rgba(232,184,75,.2)}
+.md-std.active{background:rgba(232,184,75,.1);border-color:rgba(232,184,75,.35)}
+.md-std-nm{font-size:13px;font-weight:800;color:var(--w);text-transform:uppercase;letter-spacing:.5px;font-family:'Barlow Condensed',sans-serif;margin-bottom:5px}
+.md-std-items{font-size:9px;color:rgba(241,243,247,.3);line-height:1.7}
+.md-result{background:rgba(232,184,75,.04);border:1px solid rgba(232,184,75,.15);border-radius:14px;padding:28px;position:sticky;top:80px}
+.md-res-ey{font-size:9.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(232,184,75,.45);margin-bottom:8px}
+.md-res-val{font-size:clamp(22px,2.5vw,38px);font-weight:900;color:var(--amber);font-family:'Barlow Condensed',sans-serif;letter-spacing:-1px;line-height:1;margin-bottom:4px}
+.md-res-sub{font-size:11.5px;color:rgba(241,243,247,.35);margin-bottom:22px;line-height:1.6;white-space:pre-line}
+.md-breakdown{border-top:1px solid rgba(232,184,75,.1);padding-top:18px;margin-bottom:22px}
+.md-br-row{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+.md-br-lbl{font-size:11px;color:rgba(241,243,247,.5);min-width:136px;flex-shrink:0}
+.md-br-bar{flex:1;height:5px;background:rgba(232,184,75,.1);border-radius:3px;overflow:hidden}
+.md-br-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),#F0C86C);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.md-br-pct{font-size:11px;font-weight:700;color:var(--amber);min-width:28px;text-align:right}
+.md-calc-cta{width:100%;padding:14px;background:var(--amber);color:#0A0F16;border:none;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:1px;font-family:'Space Grotesk',sans-serif;display:block;text-decoration:none;text-align:center;box-sizing:border-box}
+.md-calc-cta:hover{background:#F0C86C;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,184,75,.3)}
+.md-calc-cta2{display:block;text-align:center;padding:12px;border:1.5px solid rgba(232,184,75,.25);border-radius:8px;color:rgba(232,184,75,.65);font-size:11.5px;font-weight:600;margin-top:10px;text-decoration:none;transition:all .2s;letter-spacing:.3px}
+.md-calc-cta2:hover{background:rgba(232,184,75,.08);color:var(--amber)}
+.md-projs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.md-pcard{background:rgba(232,184,75,.03);border:1px solid rgba(232,184,75,.1);border-radius:12px;padding:22px;transition:all .22s}
+.md-pcard:hover{border-color:rgba(232,184,75,.25);transform:translateY(-4px)}
+.md-pc-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(232,184,75,.45);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.md-pc-type::before{content:'';width:18px;height:2px;background:rgba(232,184,75,.35);flex-shrink:0}
+.md-pc-name{font-size:17px;font-weight:800;color:var(--w);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;line-height:1.2}
+.md-pc-loc{font-size:11px;color:rgba(241,243,247,.3);margin-bottom:14px}
+.md-pc-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}
+.md-pc-stat{background:rgba(232,184,75,.06);border-radius:6px;padding:8px 10px}
+.md-pc-stat-lbl{font-size:9px;color:rgba(241,243,247,.3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px}
+.md-pc-stat-val{font-size:13px;font-weight:700;color:var(--w)}
+.md-pc-prog-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+.md-pc-prog-row span{font-size:10.5px;color:rgba(241,243,247,.35)}
+.md-pc-prog-row strong{font-size:15px;font-weight:800;color:var(--amber);font-family:'Barlow Condensed',sans-serif}
+.md-pc-bar{height:5px;background:rgba(232,184,75,.1);border-radius:3px;overflow:hidden}
+.md-pc-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),#F0C86C);transition:width .8s cubic-bezier(.4,0,.2,1)}
+.md-pc-stage{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:10px;font-weight:600;color:rgba(232,184,75,.65);padding:4px 10px;border-radius:20px;border:1px solid rgba(232,184,75,.2);background:rgba(232,184,75,.06)}
+@media(max-width:900px){.md-calc-layout{grid-template-columns:1fr}.md-projs{grid-template-columns:1fr}.md-wrap{padding:0 24px}.md-top{flex-direction:column;align-items:flex-start}.md-result{position:relative;top:auto}}
+@media(max-width:480px){.md-sec{padding:64px 0}.md-tabs{flex-wrap:wrap;gap:4px}.md-tab{flex:1;text-align:center;padding:9px 10px;font-size:10.5px}.md-type-grid{grid-template-columns:1fr 1fr}.md-std-grid{grid-template-columns:1fr 1fr}.md-pc-stats{grid-template-columns:1fr 1fr}.md-result{padding:20px}.md-wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+
+<a class="wpp" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2 22l4.941-1.42A9.96 9.96 0 0011.999 22C17.522 22 22 17.523 22 12S17.522 2 11.999 2z"/></svg>
+</a>
+
+<nav class="nav" id="nav">
+  <div class="nav-logo">
+    <div class="nav-mark"></div>
+    <div>
+      <div class="nav-name">Meridiano</div>
+      <div class="nav-since">Est. 2006</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#empresa">Empresa</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-tag">ISO 9001</div>
+    <a class="nav-btn" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">Orçamento</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-main">
+    <div class="hero-top">
+      <div class="h-label">
+        <div class="h-label-line"></div>
+        <div class="h-label-t">Construtora &amp; Engenharia</div>
+      </div>
+      <h1 class="hero-h1">Construindo<br><em>Sólido,</em><br>Construindo<br>Certo.</h1>
+      <p class="hero-desc">18 anos erguendo obras que resistem ao tempo — residenciais, comerciais e industriais — com engenharia de precisão e compromisso absoluto com o prazo.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">Solicitar Orçamento →</a>
+        <a class="btn-ghost" href="#projetos">Ver Projetos</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-num">340</div><div class="hs-lbl">Obras entregues</div></div>
+      <div class="hs"><div class="hs-num">18</div><div class="hs-lbl">Anos de mercado</div></div>
+      <div class="hs"><div class="hs-num">99%</div><div class="hs-lbl">No prazo</div></div>
+    </div>
+  </div>
+  <div class="hero-side">
+    <div class="hs-section" style="border-top:none;padding-top:0">
+      <div class="hs-stitle">Projetos em andamento</div>
+      <div class="proj-list">
+        <div class="proj-item">
+          <div class="proj-num">01</div>
+          <div class="proj-info"><div class="proj-name">Torres do Comércio</div><div class="proj-meta">Comercial · 18 andares · em execução</div></div>
+          <div class="proj-arrow">→</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-num">02</div>
+          <div class="proj-info"><div class="proj-name">Residencial Veredas</div><div class="proj-meta">Residencial · 240 unidades · fase estrutural</div></div>
+          <div class="proj-arrow">→</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-num">03</div>
+          <div class="proj-info"><div class="proj-name">Galpão Logístico Norte</div><div class="proj-meta">Industrial · 8.400m² · acabamento</div></div>
+          <div class="proj-arrow">→</div>
+        </div>
+      </div>
+    </div>
+    <div class="hs-section">
+      <div class="hs-stitle">Certificações</div>
+      <div class="cert-grid">
+        <div class="cert">ISO 9001</div>
+        <div class="cert">PBQP-H</div>
+        <div class="cert">CREA/BA</div>
+        <div class="cert">CAU/BR</div>
+      </div>
+    </div>
+    <div class="hs-section">
+      <div class="hs-stitle">Contato direto</div>
+      <a href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <div style="width:28px;height:28px;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2 22l4.941-1.42A9.96 9.96 0 0011.999 22C17.522 22 22 17.523 22 12S17.522 2 11.999 2z"/></svg></div>
+        <div style="font-size:12px;color:var(--w2)">(71) 98693-3096 — WhatsApp</div>
+      </a>
+      <div style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Seg–Sex 7h–18h · Sáb 8h–12h</div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="t-item">Engenharia Civil <span class="t-sep">✦</span></span>
+    <span class="t-item">Construção Residencial <span class="t-sep">✦</span></span>
+    <span class="t-item">Obras Comerciais <span class="t-sep">✦</span></span>
+    <span class="t-item">Projetos Industriais <span class="t-sep">✦</span></span>
+    <span class="t-item">Reformas &amp; Retrofits <span class="t-sep">✦</span></span>
+    <span class="t-item">Gerenciamento de Obra <span class="t-sep">✦</span></span>
+    <span class="t-item">ISO 9001 Certificado <span class="t-sep">✦</span></span>
+    <span class="t-item">340 obras entregues <span class="t-sep">✦</span></span>
+    <span class="t-item">Engenharia Civil <span class="t-sep">✦</span></span>
+    <span class="t-item">Construção Residencial <span class="t-sep">✦</span></span>
+    <span class="t-item">Obras Comerciais <span class="t-sep">✦</span></span>
+    <span class="t-item">Projetos Industriais <span class="t-sep">✦</span></span>
+    <span class="t-item">Reformas &amp; Retrofits <span class="t-sep">✦</span></span>
+    <span class="t-item">Gerenciamento de Obra <span class="t-sep">✦</span></span>
+    <span class="t-item">ISO 9001 Certificado <span class="t-sep">✦</span></span>
+    <span class="t-item">340 obras entregues <span class="t-sep">✦</span></span>
+  </div>
+</div>
+
+<section class="sec" id="servicos">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="rv">
+        <div class="eyebrow">Serviços</div>
+        <h2 class="sec-h2">O que<br>construímos.</h2>
+      </div>
+      <p class="sec-sub rv d1">Da fundação ao acabamento, cada metro quadrado é executado com rigor técnico e responsabilidade total.</p>
+    </div>
+    <div class="acc-list rv">
+      <div class="acc-item open">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="acc-left"><span class="acc-num">01</span><span class="acc-title">Construção Residencial</span><span class="acc-tag">Alta demanda</span></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <p class="acc-desc">Casas e edifícios residenciais executados com planta aprovada, materiais de primeira linha e cronograma detalhado. Entregamos na data combinada ou devolvemos 2% do contrato por semana de atraso.</p>
+            <div class="acc-feat-list">
+              <div class="acc-feat">Projetos arquitetônicos</div>
+              <div class="acc-feat">Fundação e estrutura</div>
+              <div class="acc-feat">Instalações prediais</div>
+              <div class="acc-feat">Acabamento premium</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="acc-left"><span class="acc-num">02</span><span class="acc-title">Obras Comerciais</span></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <p class="acc-desc">Lojas, escritórios, centros comerciais e espaços corporativos. Execução em regime acelerado para minimizar o período sem operação do negócio.</p>
+            <div class="acc-feat-list">
+              <div class="acc-feat">Retrofit de interiores</div>
+              <div class="acc-feat">Fachadas e vitrines</div>
+              <div class="acc-feat">Sistemas de HVAC</div>
+              <div class="acc-feat">SPDA e CFTV</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="acc-left"><span class="acc-num">03</span><span class="acc-title">Projetos Industriais</span></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <p class="acc-desc">Galpões logísticos, fábricas e plantas industriais. Estrutura metálica e concreto de alta performance, com pavimentação industrial e sistema de drenagem.</p>
+            <div class="acc-feat-list">
+              <div class="acc-feat">Estruturas metálicas</div>
+              <div class="acc-feat">Pisos industriais</div>
+              <div class="acc-feat">Drenagem pluvial</div>
+              <div class="acc-feat">Docas e pátios</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <div class="acc-left"><span class="acc-num">04</span><span class="acc-title">Gerenciamento de Obra</span></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <p class="acc-desc">Gestão completa de projetos de terceiros. Cronograma, relatórios semanais, controle de custos e coordenação de subempreiteiros. Você acompanha tudo em tempo real.</p>
+            <div class="acc-feat-list">
+              <div class="acc-feat">Cronograma físico-financeiro</div>
+              <div class="acc-feat">Relatórios fotográficos</div>
+              <div class="acc-feat">Gestão de fornecedores</div>
+              <div class="acc-feat">Controle de qualidade</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0" id="projetos">
+  <div class="wrap">
+    <div class="sec-header rv">
+      <div>
+        <div class="eyebrow">Portfólio</div>
+        <h2 class="sec-h2">Nossos<br>projetos.</h2>
+      </div>
+      <p class="sec-sub">Obras que provam o que dizemos. Cada entrega, uma referência.</p>
+    </div>
+    <div class="proj-grid rv">
+      <div class="proj-card">
+        <div class="pc-top"><div class="pc-num">01</div><div class="pc-type">Residencial</div></div>
+        <div class="pc-title">Condomínio Brisas do Mar</div>
+        <div class="pc-meta">120 unidades, 4 torres, área total 9.800m². Entregue 45 dias antes do prazo contratual.</div>
+        <div class="pc-pills"><div class="pc-pill">R$ 28M</div><div class="pc-pill">Salvador, BA</div><div class="pc-pill">2023</div></div>
+      </div>
+      <div class="proj-card">
+        <div class="pc-top"><div class="pc-num">02</div><div class="pc-type">Comercial</div></div>
+        <div class="pc-title">Centro Empresarial Progresso</div>
+        <div class="pc-meta">Torre comercial de 22 andares, 320 salas. Sistema de HVAC centralizado e certificação LEED.</div>
+        <div class="pc-pills"><div class="pc-pill">R$ 42M</div><div class="pc-pill">Camaçari, BA</div><div class="pc-pill">2024</div></div>
+      </div>
+      <div class="proj-card" style="border-bottom:none">
+        <div class="pc-top"><div class="pc-num">03</div><div class="pc-type">Industrial</div></div>
+        <div class="pc-title">Galpão LogisPark Norte</div>
+        <div class="pc-meta">Complexo logístico de 18.400m² com 8 docas, piso nivelado a laser e sistema de combate a incêndio.</div>
+        <div class="pc-pills"><div class="pc-pill">R$ 19M</div><div class="pc-pill">Dias D'Ávila, BA</div><div class="pc-pill">2024</div></div>
+      </div>
+      <div class="proj-card" style="border-bottom:none">
+        <div class="pc-top"><div class="pc-num">04</div><div class="pc-type">Retrofit</div></div>
+        <div class="pc-title">Retrofit Shopping Iguatemi</div>
+        <div class="pc-meta">Modernização completa de 3.200m² com obra em funcionamento. Zero interdição comercial.</div>
+        <div class="pc-pills"><div class="pc-pill">R$ 7M</div><div class="pc-pill">Salvador, BA</div><div class="pc-pill">2022</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DASHBOARD — CALCULADORA E OBRAS ══ -->
+<section class="md-sec" id="calculadora">
+  <div class="md-wrap">
+    <div class="md-top rv">
+      <div>
+        <div class="md-ey">Central de Projetos</div>
+        <div class="md-hdg">Simule seu<br><em>orçamento</em> agora.</div>
+      </div>
+      <div class="md-tabs">
+        <button class="md-tab active" onclick="mdTab(this,'md-calc')">Calculadora</button>
+        <button class="md-tab" onclick="mdTab(this,'md-obras')">Obras em Andamento</button>
+      </div>
+    </div>
+
+    <div class="md-db-body active" id="md-calc">
+      <div class="md-calc-layout">
+        <div>
+          <div class="md-step-lbl" data-n="01">Tipo de Obra</div>
+          <div class="md-type-grid" id="mdTypes">
+            <div class="md-type active" data-tipo="Residencial" data-base="1600">
+              <span class="md-type-ico">🏠</span>
+              <span class="md-type-nm">Residencial</span>
+              <span class="md-type-sub">Casas, sobrados, apartamentos</span>
+            </div>
+            <div class="md-type" data-tipo="Comercial" data-base="2100">
+              <span class="md-type-ico">🏢</span>
+              <span class="md-type-nm">Comercial</span>
+              <span class="md-type-sub">Lojas, escritórios, galpões</span>
+            </div>
+            <div class="md-type" data-tipo="Industrial" data-base="1900">
+              <span class="md-type-ico">🏗️</span>
+              <span class="md-type-nm">Industrial</span>
+              <span class="md-type-sub">Fábricas, armazéns, hangar</span>
+            </div>
+          </div>
+
+          <div class="md-step-lbl" data-n="02">Área Total</div>
+          <div class="md-range-row">
+            <span class="md-range-lbl">Metragem</span>
+            <span><span class="md-range-val" id="mdAreaVal">250</span><span class="md-range-unit"> m²</span></span>
+          </div>
+          <input class="md-slider" type="range" id="mdSlider" min="50" max="5000" step="50" value="250">
+          <div class="md-range-marks"><span>50 m²</span><span>1.250 m²</span><span>2.500 m²</span><span>5.000 m²</span></div>
+
+          <div class="md-step-lbl" data-n="03">Padrão de Acabamento</div>
+          <div class="md-std-grid" id="mdStds">
+            <div class="md-std" data-std="Básico" data-mult="0.82">
+              <div class="md-std-nm">Básico</div>
+              <div class="md-std-items">Cerâmica<br>Pintura acrílica<br>Esquadrias simples</div>
+            </div>
+            <div class="md-std active" data-std="Médio" data-mult="1.0">
+              <div class="md-std-nm">Médio</div>
+              <div class="md-std-items">Porcelanato<br>Gesso e massa corrida<br>Alumínio linha média</div>
+            </div>
+            <div class="md-std" data-std="Alto" data-mult="1.45">
+              <div class="md-std-nm">Alto</div>
+              <div class="md-std-items">Mármore e granito<br>Automação e CFTV<br>Esquadrias premium</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="md-result" id="mdResult">
+            <div class="md-res-ey">Estimativa de Investimento</div>
+            <div class="md-res-val" id="mdResVal">R$ 400K — R$ 460K</div>
+            <div class="md-res-sub" id="mdResSub">Residencial · 250 m² · Padrão Médio
+Estimativa com variação de ±15%</div>
+            <div class="md-breakdown">
+              <div class="md-br-row"><span class="md-br-lbl">Fundação e Estrutura</span><div class="md-br-bar"><div class="md-br-fill" style="width:35%"></div></div><span class="md-br-pct">35%</span></div>
+              <div class="md-br-row"><span class="md-br-lbl">Alvenaria e Cobertura</span><div class="md-br-bar"><div class="md-br-fill" style="width:20%"></div></div><span class="md-br-pct">20%</span></div>
+              <div class="md-br-row"><span class="md-br-lbl">Instalações</span><div class="md-br-bar"><div class="md-br-fill" style="width:18%"></div></div><span class="md-br-pct">18%</span></div>
+              <div class="md-br-row"><span class="md-br-lbl">Acabamentos</span><div class="md-br-bar"><div class="md-br-fill" style="width:22%"></div></div><span class="md-br-pct">22%</span></div>
+              <div class="md-br-row"><span class="md-br-lbl">Administração e BDI</span><div class="md-br-bar"><div class="md-br-fill" style="width:5%"></div></div><span class="md-br-pct">5%</span></div>
+            </div>
+            <a class="md-calc-cta" id="mdCalcCta" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">Solicitar Orçamento Detalhado</a>
+            <a class="md-calc-cta2" href="#contato">Agendar Visita Técnica Gratuita</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md-db-body" id="md-obras">
+      <div class="md-projs">
+        <div class="md-pcard">
+          <div class="md-pc-type">Comercial</div>
+          <div class="md-pc-name">Torres do Comércio</div>
+          <div class="md-pc-loc">📍 Itaigara, Salvador — BA</div>
+          <div class="md-pc-stats">
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Valor</div><div class="md-pc-stat-val">R$ 12,4M</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Área</div><div class="md-pc-stat-val">8.400 m²</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Início</div><div class="md-pc-stat-val">Mar/2025</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Entrega</div><div class="md-pc-stat-val">Dez/2026</div></div>
+          </div>
+          <div class="md-pc-prog-row"><span>Progresso</span><strong>68%</strong></div>
+          <div class="md-pc-bar"><div class="md-pc-fill" style="width:68%"></div></div>
+          <div class="md-pc-stage">▶ Estrutura — 4º andar</div>
+        </div>
+        <div class="md-pcard">
+          <div class="md-pc-type">Residencial</div>
+          <div class="md-pc-name">Residencial Veredas</div>
+          <div class="md-pc-loc">📍 Piatã, Salvador — BA</div>
+          <div class="md-pc-stats">
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Valor</div><div class="md-pc-stat-val">R$ 5,2M</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Área</div><div class="md-pc-stat-val">3.800 m²</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Início</div><div class="md-pc-stat-val">Jan/2026</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Entrega</div><div class="md-pc-stat-val">Jun/2027</div></div>
+          </div>
+          <div class="md-pc-prog-row"><span>Progresso</span><strong>42%</strong></div>
+          <div class="md-pc-bar"><div class="md-pc-fill" style="width:42%"></div></div>
+          <div class="md-pc-stage">▶ Alvenaria — 1º bloco</div>
+        </div>
+        <div class="md-pcard">
+          <div class="md-pc-type">Industrial</div>
+          <div class="md-pc-name">LogisPark Norte</div>
+          <div class="md-pc-loc">📍 Centro Industrial, Camaçari — BA</div>
+          <div class="md-pc-stats">
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Valor</div><div class="md-pc-stat-val">R$ 18,7M</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Área</div><div class="md-pc-stat-val">22.000 m²</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Início</div><div class="md-pc-stat-val">Jun/2024</div></div>
+            <div class="md-pc-stat"><div class="md-pc-stat-lbl">Entrega</div><div class="md-pc-stat-val">Set/2026</div></div>
+          </div>
+          <div class="md-pc-prog-row"><span>Progresso</span><strong>91%</strong></div>
+          <div class="md-pc-bar"><div class="md-pc-fill" style="width:91%"></div></div>
+          <div class="md-pc-stage">▶ Acabamentos finais</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+function mdTab(btn,id){
+  document.querySelectorAll('.md-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.md-db-body').forEach(function(b){b.classList.remove('active');});
+  var el=document.getElementById(id);if(el)el.classList.add('active');
+}
+(function(){
+  var basePrice=1600,mult=1.0,area=250,tipo='Residencial';
+  function fmtBRL(v){
+    if(v>=1000000)return'R$ '+(Math.round(v/100000)/10).toFixed(1).replace('.',',')+'M';
+    if(v>=1000)return'R$ '+Math.round(v/1000)+'K';
+    return'R$ '+v;
+  }
+  function calc(){
+    var v=Math.round(basePrice*mult*area/1000)*1000;
+    var vMax=Math.round(v*1.15/1000)*1000;
+    var el=document.getElementById('mdResVal');if(el)el.textContent=fmtBRL(v)+' — '+fmtBRL(vMax);
+    var std=document.querySelector('#mdStds .md-std.active');
+    var sub=document.getElementById('mdResSub');
+    if(sub)sub.textContent=tipo+' · '+area+' m² · Padrão '+(std?std.dataset.std:'Médio')+'\nEstimativa com variação de ±15%';
+    var cta=document.getElementById('mdCalcCta');
+    if(cta){
+      var msg='Olá! Quero solicitar orçamento detalhado:\n- Tipo: '+tipo+'\n- Área: '+area+' m²\n- Padrão: '+(std?std.dataset.std:'Médio')+'\n- Estimativa: '+fmtBRL(v)+' a '+fmtBRL(vMax)+'\n\nPode me ajudar?';
+      cta.href='https://wa.me/5571986933096?text='+encodeURIComponent(msg);
+    }
+  }
+  document.querySelectorAll('#mdTypes .md-type').forEach(function(el){
+    el.addEventListener('click',function(){
+      document.querySelectorAll('#mdTypes .md-type').forEach(function(e){e.classList.remove('active');});
+      el.classList.add('active');basePrice=parseInt(el.dataset.base);tipo=el.dataset.tipo;calc();
+    });
+  });
+  document.querySelectorAll('#mdStds .md-std').forEach(function(el){
+    el.addEventListener('click',function(){
+      document.querySelectorAll('#mdStds .md-std').forEach(function(e){e.classList.remove('active');});
+      el.classList.add('active');mult=parseFloat(el.dataset.mult);calc();
+    });
+  });
+  var sl=document.getElementById('mdSlider'),av=document.getElementById('mdAreaVal');
+  if(sl)sl.addEventListener('input',function(){area=parseInt(sl.value);if(av)av.textContent=area;calc();});
+  calc();
+})();
+</script>
+
+<div style="border-top:1px solid var(--bd)">
+  <div class="manifest-wrap rv" id="empresa">
+    <div>
+      <div class="eyebrow">Quem somos</div>
+      <h2 class="mf-h2">18 anos.<br>340 obras.<br>Zero<br>desculpas.</h2>
+      <div class="mf-body">
+        <p class="mf-p">A Meridiano nasceu de um compromisso simples: <strong>entregar o que foi prometido, no prazo combinado, sem surpresas.</strong></p>
+        <p class="mf-p">Não somos a maior construtora da Bahia. Somos a mais exigente com nós mesmos. Cada obra começa com um cronograma detalhado e termina com um cliente satisfeito.</p>
+        <p class="mf-p">Certificação ISO 9001 não é placa na parede para nós — é o jeito que trabalhamos todos os dias.</p>
+      </div>
+    </div>
+    <div class="mf-right rv d1">
+      <div class="mf-metric"><div class="mf-metric-num">340</div><div class="mf-metric-text"><strong>Obras entregues</strong>residenciais, comerciais e industriais</div></div>
+      <div class="mf-metric"><div class="mf-metric-num">99%</div><div class="mf-metric-text"><strong>Taxa de pontualidade</strong>entregas no prazo ou antes</div></div>
+      <div class="mf-metric"><div class="mf-metric-num">18</div><div class="mf-metric-text"><strong>Anos de mercado</strong>desde 2006 em Salvador, BA</div></div>
+      <div class="mf-metric"><div class="mf-metric-num">4.8</div><div class="mf-metric-text"><strong>Avaliação Google</strong>+180 clientes avaliaram</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="dep-wrap" id="depoimentos">
+  <div class="wrap">
+    <div class="sec-header rv">
+      <div>
+        <div class="eyebrow">Depoimentos</div>
+        <h2 class="sec-h2">Quem já<br>construiu.</h2>
+      </div>
+    </div>
+    <div class="dep-grid rv">
+      <div class="dep-card">
+        <span class="dep-open">"</span>
+        <p class="dep-q">Contratei a Meridiano para gerenciar uma obra comercial de R$ 12 milhões. Entregaram 30 dias antes e dentro do orçamento. Impressionante.</p>
+        <div class="dep-line"></div>
+        <div class="dep-name">Carlos Mendonça</div>
+        <div class="dep-role">CEO, Grupo Mendonça Empreendimentos</div>
+      </div>
+      <div class="dep-card">
+        <span class="dep-open">"</span>
+        <p class="dep-q">Minha casa dos sonhos construída com transparência total. Recebia fotos e relatórios toda semana. Nunca precisei ir pessoalmente para saber o que estava acontecendo.</p>
+        <div class="dep-line"></div>
+        <div class="dep-name">Fernanda Costa</div>
+        <div class="dep-role">Médica — Residência personalizada, Salvador</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="contato" style="border-top:1px solid var(--bd)">
+  <div class="cta-section rv">
+    <div>
+      <div class="cta-label"><div class="cta-label-line"></div><div class="cta-label-t">Fale conosco</div></div>
+      <div class="cta-h2">Próxima obra<br>é a <em>sua.</em></div>
+      <p class="cta-sub">Orçamento sem compromisso. Resposta em até 2 horas.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn-wpp" href="https://wa.me/5571986933096" target="_blank" rel="noopener noreferrer">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2 22l4.941-1.42A9.96 9.96 0 0011.999 22C17.522 22 22 17.523 22 12S17.522 2 11.999 2z"/></svg>
+        Solicitar Orçamento
+      </a>
+      <a class="btn-primary" href="tel:+5571986933096">(71) 98693-3096</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="f-logo">
+    <div class="f-mark"></div>
+    <div>
+      <div class="f-name">Meridiano</div>
+      <div style="font-size:10px;letter-spacing:1px;color:var(--light);text-transform:uppercase">Construtora</div>
+    </div>
+  </div>
+  <nav class="f-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#empresa">Empresa</a>
+  </nav>
+  <div class="f-right">
+    <div class="f-copy">© <span id="yr"></span> Meridiano</div>
+    <a class="badge-back" href="index.html">← Portfólio</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target);} }), {threshold:.06});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+}));
+function toggleAcc(head){
+  const item = head.closest('.acc-item');
+  const body = item.querySelector('.acc-body');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.acc-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.acc-body').style.maxHeight = '0';
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+const firstBody = document.querySelector('.acc-item.open .acc-body');
+if(firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+</script>
+</body>
+</html>
